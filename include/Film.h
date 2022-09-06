@@ -39,8 +39,10 @@ public:
     int getDirectorsCount();
     std::string getProducer();
     std::string getProducer(int number);
+    std::vector<std::string>& getProducersList();
     int getProducersCount();
     void getActor(std::string& _pers, std::string& _name, int number);
+    void getActors(std::vector<std::pair<std::string, std::string>>& actors);
     std::string getPersonage(int number);
     std::string getActor(int number);
     int getActorsCount();

@@ -65,6 +65,7 @@ std::string Film::getActor(int number) {
             if (counter == number) {
                 return it->second;
             }
+            counter++;
         }
     } else {
         return "empty";
@@ -80,10 +81,20 @@ void Film::getActor(std::string &_pers, std::string &_name, int number) {
                 _name = it->first;
                 break;
             }
+            counter++;
         }
     } else {
         _pers = "empty";
         _name = "empty";
+    }
+}
+
+void Film::getActors(std::vector<std::pair<std::string, std::string>>& actors) {
+    if (!cast.empty()) {
+        int counter = 0;
+        for (std::map<std::string, std::string>::iterator it = cast.begin(); it != cast.end(); it++) {
+            actors.push_back(std::pair<std::string, std::string>(it->first, it->second));
+        }
     }
 }
 
@@ -94,6 +105,7 @@ std::string Film::getPersonage(int number) {
             if (counter == number) {
                 return it->first;
             }
+            counter++;
         }
     } else {
         return "empty";
@@ -139,6 +151,12 @@ std::string Film::getProducer() {
 std::string Film::getProducer(int number) {
     if (!producer.empty() && number < producer.size()) {
         return producer[number];
+    }
+}
+
+std::vector<std::string> &Film::getProducersList() {
+    if (!producer.empty()) {
+        return producer;
     }
 }
 
